@@ -4,10 +4,7 @@ export const signupSchema = z
   .object({
     username: z.string().min(1, { message: "Username is required" }),
 
-    email: z
-      .string()
-      .min(1, { message: "Email is required" })
-      .email({ message: "Enter a valid email" }),
+    email: z.email({ message: "Enter a valid email" }),
 
     password: z
       .string()
@@ -15,9 +12,7 @@ export const signupSchema = z
       .regex(/[A-Z]/, { message: "Password must have an uppercase letter" })
       .regex(/[a-z]/, { message: "Password must have a lowercase letter" })
       .regex(/[0-9]/, { message: "Password must have a number" })
-      .regex(/[@$!%*?&#]/, {
-        message: "Password must have a special character",
-      }),
+      .regex(/[@$!%*?&#]/, { message: "Password must have a special character" }),
 
     confirmPassword: z
       .string()
